@@ -206,6 +206,15 @@ class SlideActionState extends State<SlideAction>
                                     await _checkAnimation();
 
                                     widget.onSubmit!();
+
+                                    await Future.delayed(Duration(seconds: 1));
+
+                                    await reset();
+
+                                    /* await _checkAnimationController.reverse().orCancel;
+                                    await _shrinkAnimationController.reverse().orCancel;
+                                    await _resizeAnimationController.reverse().orCancel; */
+
                                   }
                                 },
                                 child: Padding(
@@ -393,8 +402,7 @@ class SlideActionState extends State<SlideAction>
       final sliderWidth = sliderBox.size.width;
 
       _maxDx = _containerWidth! -
-          (sliderWidth / 2) -
-          40 -
+          sliderWidth -
           widget.sliderButtonYOffset;
     });
   }
